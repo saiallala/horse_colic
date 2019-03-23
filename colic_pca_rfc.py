@@ -25,7 +25,6 @@ data.packed_cell_volume = data.packed_cell_volume.fillna(value=data.packed_cell_
 data.nasogastric_reflux_ph = data.nasogastric_reflux_ph.fillna(value=data.nasogastric_reflux_ph.mean())
 
 #data.drop('nasogastric_reflux_ph',axis=1).values
-
 col = null.index
 for i in col:
     data[i] = data[i].fillna(data[i].mode()[0])
@@ -42,6 +41,7 @@ plt.figure(figsize=(8, 5))
 sb.countplot(x='outcome', data=data)
 plt.show()
 '''
+
 #Dependent and Independent attributes
 X = data.iloc[:, :-4].values
 y = data.iloc[:,26].values
