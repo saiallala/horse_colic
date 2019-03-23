@@ -27,7 +27,6 @@ data.nasogastric_reflux_ph = data.nasogastric_reflux_ph.fillna(value=data.nasoga
 
 #data.drop('nasogastric_reflux_ph',axis=1).values
 
-
 col = null.index
 for i in col:
     data[i] = data[i].fillna(data[i].mode()[0])
@@ -46,7 +45,7 @@ sb.countplot(x='outcome', data=data)
 plt.show()
 '''
 #Dependent and Independent attributes
-X = data.iloc[:, :-2].values
+X = data.iloc[:, :-4].values
 y = data.iloc[:,26 ].values
 
 #X = data.drop('outcome', axis=1).values
@@ -62,7 +61,6 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -75,12 +73,10 @@ algo = {'LR':LogisticRegression(),
         'SVM':SVC(gamma=0.001),
         'KNN':KNeighborsClassifier(n_neighbors=10)}
 
-
 for k, v in algo.items():
     model = v
     model.fit(X_train, y_train)
     print('Score of ' + k + ' is {0:.2f}'.format(model.score(X_test, y_test)*100))
-
 
 #PCA
 from sklearn.decomposition import PCA
@@ -88,7 +84,6 @@ pca = PCA(n_components = 2)
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 newvar = pca.explained_variance_ratio_
-
 
 '''#KPCA
 from sklearn.decomposition import KernelPCA
@@ -104,14 +99,12 @@ plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
 
-
 from matplotlib.colors import ListedColormap
 plt.figure(figsize=(8, 5))
 plt.scatter(X_test[:,0],X_test[:,1],c=y_test,cmap = ListedColormap(('red', 'green','blue')))
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
-
 
 from sklearn.svm import SVC
 classifier = SVC(kernel = 'linear', random_state = 0)

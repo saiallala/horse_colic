@@ -5,8 +5,6 @@ import pandas as pd
 
 data = pd.read_csv('horse.csv')
 
-
-
 null = data.isnull().sum()/len(data)*100 #Count the missing value
 null = null[null>0]
 null.sort_values(inplace=True, ascending=False)
@@ -27,7 +25,6 @@ data.packed_cell_volume = data.packed_cell_volume.fillna(value=data.packed_cell_
 data.nasogastric_reflux_ph = data.nasogastric_reflux_ph.fillna(value=data.nasogastric_reflux_ph.mean())
 
 #data.drop('nasogastric_reflux_ph',axis=1).values
-
 
 col = null.index
 for i in col:
@@ -63,7 +60,6 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -88,8 +84,6 @@ lda = LDA(n_components= 2)
 X_train  = lda.fit_transform(X_train,y_train)
 X_test = lda.transform(X_test)
 
-
-
 from matplotlib.colors import ListedColormap
 plt.figure(figsize=(8, 5))
 plt.scatter(X_train[:,0],X_train[:,1],c=y_train,cmap = ListedColormap(('red', 'green','blue')))
@@ -97,14 +91,12 @@ plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
 
-
 from matplotlib.colors import ListedColormap
 plt.figure(figsize=(8, 5))
 plt.scatter(X_test[:,0],X_test[:,1],c=y_test,cmap = ListedColormap(('red', 'green','blue')))
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
-
 
 from sklearn.svm import SVC
 classifier = SVC(kernel = 'linear', random_state = 0)
@@ -116,7 +108,6 @@ cm = confusion_matrix(y_pred, y_test)
 sb.set(font_scale=1)
 sb.heatmap(cm, annot=True)
 plt.show()
-
 
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = model,X= X_train,y=y_train,cv=10)
@@ -134,7 +125,6 @@ numf = fit.n_features_
 supp = fit.support_
 rank = fit.ranking_
 
-
 #Selecting KBest
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
@@ -145,7 +135,6 @@ X_test = skb.transform(X_test)
 feat = skb.transform(X_train)
 scores = fitskb.scores_
 '''
-
 
 #Grid Search
 from sklearn.model_selection import GridSearchCV
@@ -177,7 +166,6 @@ plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
 plt.show()
-
 
 #Testset Visual
 from matplotlib.colors import ListedColormap
