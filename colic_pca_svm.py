@@ -5,11 +5,10 @@ import pandas as pd
 
 data = pd.read_csv('horse.csv')
 
-
-
 null = data.isnull().sum()/len(data)*100 #Count the missing value
 null = null[null>0]
 null.sort_values(inplace=True, ascending=False)
+
 #print(null)
 null = null.to_frame()   #convert into dataframe
 '''plt.figure(figsize=(20, 10))
@@ -129,7 +128,7 @@ plt.show()
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = model,X= X_train,y=y_train,cv=10)
 accuracies.mean()
-accuracies.std()
+#accuracies.std()
 
 '''
 RFE

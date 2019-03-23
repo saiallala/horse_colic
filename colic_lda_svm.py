@@ -121,7 +121,7 @@ plt.show()
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = model,X= X_train,y=y_train,cv=10)
 accuracies.mean()
-accuracies.std()
+#accuracies.std()
 
 '''
 #RFE
