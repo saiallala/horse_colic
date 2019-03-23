@@ -130,7 +130,8 @@ accuracies = cross_val_score(estimator = model,X= X_train,y=y_train,cv=10)
 accuracies.mean()
 accuracies.std()
 
-
+'''
+#RFE
 from sklearn.feature_selection import RFE
 rfe = RFE(classifier, 2)
 fit = rfe.fit(X_train, y_train)
@@ -150,7 +151,7 @@ X_train  = skb.fit_transform(X_train,y_train)
 X_test = skb.transform(X_test)
 feat = skb.transform(X_train)
 scores = fitskb.scores_
-
+'''
 
 
 #Grid Search
@@ -169,26 +170,6 @@ grid_search = GridSearchCV(estimator=classifier,
 grid_search = grid_search.fit(X_train,y_train)
 best_accuracy = grid_search.best_score_
 best_parameters = grid_search.best_params_
-
-#Random Search
-from sklearn.model_selection import RandomizedSearchCV
-rgrid = { 'bootstrap': [True,False],
- 'max_depth': [11,12,13,],
- 'max_features': [2,3,4],
- 'min_samples_leaf': [2,3,4],
- 'min_samples_split': [2, 5],
- }
-rsearch = RandomizedSearchCV(estimator = classifier,
-                                   param_distributions = rgrid,
-                                   n_iter = 100,
-                                   cv = 10,
-                                   verbose=2,
-                                   random_state=42,
-                                   n_jobs = -1)
-rsearch = rsearch.fit(X_train,y_train)
-rbest_accuracy = rsearch.best_score_
-rbest_params = rsearch.best_params_
-
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap
