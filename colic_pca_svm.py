@@ -155,22 +155,6 @@ scores = fitskb.scores_
 
 
 #Grid Search
-from sklearn.model_selection import GridSearchCV
-parameters = [{ 'bootstrap': [True,False],
- 'max_depth': [11,12,13,],
- 'max_features': [2],
- 'min_samples_leaf': [2,3,4],
- 'min_samples_split': [2, 5],
- }]
-grid_search = GridSearchCV(estimator=classifier,
-                           param_grid=parameters,
-                           scoring='accuracy',
-                           cv=10,
-                           n_jobs=-1)
-grid_search = grid_search.fit(X_train,y_train)
-best_accuracy = grid_search.best_score_
-best_parameters = grid_search.best_params_
-
 
 from sklearn.model_selection import GridSearchCV
 parameters = [{'C':[1,2,3,4],'kernel':['linear']},

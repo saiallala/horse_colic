@@ -148,23 +148,6 @@ scores = fitskb.scores_
 
 #Grid Search
 from sklearn.model_selection import GridSearchCV
-parameters = [{ 'bootstrap': [True,False],
- 'max_depth': [11,12,13,],
- 'max_features': [2],
- 'min_samples_leaf': [2,3,4],
- 'min_samples_split': [2, 5],
- }]
-grid_search = GridSearchCV(estimator=classifier,
-                           param_grid=parameters,
-                           scoring='accuracy',
-                           cv=10,
-                           n_jobs=-1)
-grid_search = grid_search.fit(X_train,y_train)
-best_accuracy = grid_search.best_score_
-best_parameters = grid_search.best_params_
-
-
-from sklearn.model_selection import GridSearchCV
 parameters = [{'C':[1,2,3,4],'kernel':['linear']},
               {'C':[3,4,5,6,7,8],'kernel':['rbf'],'gamma':[0.025,0.023,0.027,0.029,0.022]}]
 grid_search = GridSearchCV(estimator=classifier,
@@ -176,7 +159,7 @@ grid_search = grid_search.fit(X_train,y_train)
 best_accuracy = grid_search.best_score_
 best_parameters = grid_search.best_params_
 
-
+'''
 #Random Search
 from sklearn.model_selection import RandomizedSearchCV
 rgrid = { 'bootstrap': [True,False],
@@ -195,6 +178,7 @@ rsearch = RandomizedSearchCV(estimator = classifier,
 rsearch = rsearch.fit(X_train,y_train)
 rbest_accuracy = rsearch.best_score_
 rbest_params = rsearch.best_params_
+'''
 
 
 # Visualising the Training set results
