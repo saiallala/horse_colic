@@ -91,20 +91,12 @@ X_test = pca.transform(X_test)
 newvar = pca.explained_variance_ratio_
 
 
-#KPCA
+'''#KPCA
 from sklearn.decomposition import KernelPCA
 kpca = KernelPCA(n_components = 2,kernel='rbf')
 X_train = kpca.fit_transform(X_train)
 X_test = kpca.transform(X_test)
-
-
-#LDA
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
-lda = LDA(n_components= 2)
-X_train  = lda.fit_transform(X_train,y_train)
-X_test = lda.transform(X_test)
-
-
+'''
 
 from matplotlib.colors import ListedColormap
 plt.figure(figsize=(8, 5))
@@ -123,13 +115,8 @@ plt.legend()
 
 
 from sklearn.svm import SVC
-classifier = SVC(kernel = 'rbf', random_state = 0)
+classifier = SVC(kernel = 'linear', random_state = 0)
 classifier.fit(X_train, y_train)
-
-from sklearn.ensemble import RandomForestClassifier
-classifier = RandomForestClassifier(n_estimators = 800,criterion='entropy',random_state = 0)
-classifier.fit(X_train, y_train)
-
 y_pred = classifier.predict(X_test)
 
 from sklearn.metrics import confusion_matrix
