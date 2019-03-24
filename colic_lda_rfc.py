@@ -1,4 +1,4 @@
-import numpy as np
+4import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sb
 import pandas as pd
@@ -43,7 +43,7 @@ sb.countplot(x='outcome', data=data)
 plt.show()
 '''
 #Dependent and Independent attributes
-X = data.iloc[:, :-4].values
+X = data.iloc[:, :-2].values
 y = data.iloc[:,26 ].values
 
 #X = data.drop('outcome', axis=1).values

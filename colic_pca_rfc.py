@@ -43,7 +43,7 @@ plt.show()
 '''
 
 #Dependent and Independent attributes
-X = data.iloc[:, :-4].values
+X = data.iloc[:, :-2].values
 y = data.iloc[:,26].values
 
 #X = data.drop('outcome', axis=1).values
