@@ -85,13 +85,6 @@ X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 newvar = pca.explained_variance_ratio_
 
-'''#KPCA
-from sklearn.decomposition import KernelPCA
-kpca = KernelPCA(n_components = 2,kernel='rbf')
-X_train = kpca.fit_transform(X_train)
-X_test = kpca.transform(X_test)
-'''
-
 from matplotlib.colors import ListedColormap
 plt.figure(figsize=(8, 5))
 plt.scatter(X_train[:,0],X_train[:,1],c=y_train,cmap = ListedColormap(('red', 'green','blue')))
@@ -121,31 +114,6 @@ plt.show()
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = model,X= X_train,y=y_train,cv=10)
 accuracies.mean()
-#accuracies.std()
-
-'''
-RFE
-from sklearn.feature_selection import RFE
-rfe = RFE(classifier, 2)
-fit = rfe.fit(X_train, y_train)
-X_train  = rfe.fit_transform(X_train,y_train)
-X_test = rfe.transform(X_test)
-numf = fit.n_features_
-supp = fit.support_
-rank = fit.ranking_
-
-
-#Selecting KBest
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import chi2
-skb = SelectKBest(score_func=chi2, k=2)
-fitskb = skb.fit(X_train, y_train)
-X_train  = skb.fit_transform(X_train,y_train)
-X_test = skb.transform(X_test)
-feat = skb.transform(X_train)
-scores = fitskb.scores_
-'''
-
 
 #Grid Search
 from sklearn.model_selection import GridSearchCV
@@ -177,7 +145,6 @@ plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
 plt.show()
-
 
 #Testset Visual
 from matplotlib.colors import ListedColormap
