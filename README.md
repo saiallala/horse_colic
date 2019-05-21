@@ -66,7 +66,7 @@ Attribute Information:
 - 4 and 6 are indicative of serious circulatory compromise 
 - 5 is more indicative of a septicemia 
 
-10: capillary refill time 
+10: capillary refill time
 - a clinical judgement. The longer the refill, the poorer the circulation 
 - possible values 
 1 = < 3 seconds 

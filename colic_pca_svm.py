@@ -104,10 +104,15 @@ classifier = SVC(kernel = 'linear', random_state = 0)
 classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 
+#TEST CASE      
+newrow = [1,0,16,14,13,2,2,5,5,3,0,2,2,1,0,0,32,72,1,6,1,0,11,0,0]
+X_test = np.vstack([X_test, newrow])
+print("Prediction value " + str(model.predict([X_test[111]])))
+print("Real value " + str(y_test[110]))
+
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_pred, y_test)
 sb.set(font_scale=1)
-sb.heatmap(cm, annot=True)
 plt.show()
 
 
